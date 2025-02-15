@@ -1,0 +1,54 @@
+{% load static %}
+ <style>
+    .carousel_caption h1 {
+        color: red;
+    }
+   .container {
+  width: 1400px; /* Increase the width to 1400px */
+  margin: 0 auto; /* Center the container */
+}
+
+.row {
+  width: 100%; /* Keep the width at 100% of its parent container */
+}
+</style>
+
+<div class="slidebar">
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+
+        <!-- Carousel Indicators -->
+        <ol class="carousel-indicators">
+            {% for slider in sliders %}
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+            {% endfor %}
+        </ol>
+
+        <!-- Carousel Items -->
+        <div class="carousel-inner">
+            {% for slider in sliders %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}" 
+                     style="background-image: url('{{slider.image.url }}');">
+                    <div class="carousel_caption">
+                        <h1>{{ slider.title }}</h1>
+                        <h2>{{ slider.deal }}</h2>
+                        <p>{{ slider.discount }}% Offer</p>
+                        <a href="{{ slider.link }}">View Now</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Carousel Controls -->
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div> 
+
+{% comment %} ******************************************************************************* {% endcomment %}
+
