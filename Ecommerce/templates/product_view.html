@@ -1,0 +1,392 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+
+
+</style>
+<div class="shop-area">
+            <div class="breadcrumb-area">
+               <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li><span>Shop</span></li>
+               </ul>
+            </div>
+            <div class="row">
+               <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                  <div class="sidebar-area">
+                     <div class="shop-widget">
+                        <div class="widget-title">
+                           <h2>categories</h2>
+                        </div>
+                        <div class="widget-content">
+                           <ul id="accordion">
+                              <li>
+                                 <h4>Collection <span class="plusminus">-</span></h4>
+                                 <ul style="display: block;">
+                                 {% for cat in categories %}
+                                    <li>
+                                    <a href="shop.html">{{ cat.title }}</a>
+                                    </li>
+                                 {% endfor %}
+                                 </ul>
+                              </li>
+                        </div>
+                     </div>
+                     <div class="shop-widget">
+                        <div class="widget-title">
+                           <h2>Shop By</h2>
+                        </div>
+                        <div class="widget-content">
+                           <ul>
+                              <li>
+                                 <h4>Manufacturer</h4>
+                                 <ul>
+                                    <li><a href="shop.html">Adidas</a><span>(20)</span></li>
+                                    <li><a href="shop.html">Converse</a><span>(16)</span></li>
+                                    <li><a href="shop.html">Nike</a><span>(10)</span></li>
+                                    <li><a href="shop.html">Gucci</a><span>(25)</span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="shop-widget">
+                        <h3>Price Filter</h3>
+                        <div class="widget-content">
+                           <div id="slider-range"></div>
+                           <input type="text" id="amount">
+                        </div>
+                     </div>
+                     <div class="shop-widget">
+                        <div class="widget-content">
+                           <ul>
+                              <li>
+                                 <h4>Color Options</h4>
+                                 <ul>
+                                    <li><a href="shop.html">Black</a><span>(8)</span></li>
+                                    <li><a href="shop.html">White</a><span>(12)</span></li>
+                                    <li><a href="shop.html">Blue</a><span>(10)</span></li>
+                                    <li><a href="shop.html">Yellow</a><span>(14)</span></li>
+                                    <li><a href="shop.html">Red</a><span>(17)</span></li>
+                                    <li><a href="shop.html">Green</a><span>(20)</span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="shop-widget">
+                        <div class="widget-content">
+                           <ul>
+                              <li>
+                                 <h4>Size Options</h4>
+                                 <ul>
+                                    <li><a href="shop.html">L</a><span>(8)</span></li>
+                                    <li><a href="shop.html">M</a><span>(12)</span></li>
+                                    <li><a href="shop.html">S</a><span>(10)</span></li>
+                                    <li><a href="shop.html">XL</a><span>(14)</span></li>
+                                    <li><a href="shop.html">XX</a><span>(17)</span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="shop-widget">
+                        <div class="widget-title">
+                           <h2>Compare</h2>
+                        </div>
+                        <div class="widget-content">
+                           <p>You have no items to compare.</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
+                  <div class="shop-left-sidebar">
+                     <div class="shop-banner">
+                        <h3>New Style 2019</h3>
+                        <h4>Furniture</h4>
+                        <p>It is a long established fact that a reader will be<br>
+                           distracted by the readable content.
+                        </p>
+                     </div>
+                     <div class="shop-products">
+                        <div class="filter-bar">
+                           <div class="row">
+                              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                 <div class="prd-tab">
+                                    <ul class="nav nav-tabs" id="myTab1" role="tablist">
+                                       <li class="nav-item">
+                                          <a class="nav-link active" id="tab-1" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true"><i class="fas fa-list-ul"></i></a>
+                                       </li>
+                                       <li class="nav-item">
+                                          <a class="nav-link" id="tab-2" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false"><i class="fas fa-th-large"></i></a>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <div class="product-filter">
+                                    <form action="#">
+                                       <select name="pro-filter" id="pro-filter">
+                                          <option value="1">Default Sorting </option>
+                                          <option value="3">New Product </option>
+                                          <option value="2">Top Sales </option>
+                                       </select>
+                                    </form>
+                                 </div>
+                              </div>
+                              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                 <div class="product-showing">
+                                    <p>SHOWING {{products.count}}  RESULTS </p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                       <div class="tab-content" id="myTabContent-1">
+                    <div class="tab-pane fade show active" id="tab1{{forloop.counter}}" role="tabpanel" aria-labelledby="tab-1">
+                    <div class="shop-grid">
+                <div class="product-item">
+                 <div class="row">
+                    <ul>
+                        {% for product in products %}
+                            <li>
+                                <div class="product-grid">
+                                    <div class="product-image">
+                                        <a href="#">
+                                            <img class="pic-1" src="{{product.feature_image}}" style="height:320px;width:200px;" alt="Product image">
+                                        </a>
+                                        <ul class="social">
+                                            <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="#" data-tip="Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                                            <li><a href="#" data-tip="Compare"><i class="fas fa-exchange-alt"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="title">{{ product.title|truncatechars:50 }}</h3>
+                                        <div class="price">RS:{{ product.price }}
+                                            <span>$20.00</span>
+                                        </div>
+                                        <a class="add-to-cart" href="cart.html">Add To Cart</a>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+                                          
+
+
+   {% comment %} ####################################### {% endcomment %}
+                           <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab-2">
+                              <div class="shop-list">
+                                 <Ul>
+                                    <li>
+                                       <div class="product-list">
+                                          <div class="row">
+                                             <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12">
+                                                <div class="product-image">
+                                                   <a href="configurable.html">
+                                                   <img class="pic-1" src="assets/images/products/men-1-1.jpg" alt="Product image">
+                                                   <img class="pic-2" src="assets/images/products/men-1-2.jpg" alt="Product image">
+                                                   </a>                                                
+                                                </div>
+                                             </div>
+                                             <div class="col-xl-8 col-lg-7 col-md-7 col-sm-12">
+                                                <div class="list-content">
+                                                   <h3><a href="configurable.html">Lorem ipsum dolor</a></h3>
+                                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                                   <div class="price">$16.00
+                                                      <span>$20.00</span>
+                                                   </div>
+                                                   <div class="listcart-area">
+                                                      <div class="list-cart">
+                                                         <a class="add-to-cart" href="cart.html">Add To Cart</a>
+                                                      </div>
+                                                      <div class="social">
+                                                         <ul>
+                                                            <li><a href="#" title="Quick View"><i class="fa fa-eye"></i></a></li>
+                                                            <li><a href="#" title="Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                                                            <li><a href="#" title="Compare"><i class="fas fa-exchange-alt"></i></a></li>
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div class="product-list">
+                                          <div class="row">
+                                             <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12">
+                                                <div class="product-image">
+                                                   <a href="configurable.html">
+                                                   <img class="pic-1" src="assets/images/products/men-2-1.jpg" alt="Product image">
+                                                   <img class="pic-2" src="assets/images/products/men-2-2.jpg" alt="Product image">
+                                                   </a>                                                
+                                                </div>
+                                             </div>
+                                             <div class="col-xl-8 col-lg-7 col-md-7 col-sm-12">
+                                                <div class="list-content">
+                                                   <h3><a href="configurable.html">Lorem ipsum dolor</a></h3>
+                                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                                   <div class="price">$16.00
+                                                      <span>$20.00</span>
+                                                   </div>
+                                                   <div class="listcart-area">
+                                                      <div class="list-cart">
+                                                         <a class="add-to-cart" href="cart.html">Add To Cart</a>
+                                                      </div>
+                                                      <div class="social">
+                                                         <ul>
+                                                            <li><a href="#" title="Quick View"><i class="fa fa-eye"></i></a></li>
+                                                            <li><a href="#" title="Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                                                            <li><a href="#" title="Compare"><i class="fas fa-exchange-alt"></i></a></li>
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div class="product-list">
+                                          <div class="row">
+                                             <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12">
+                                                <div class="product-image">
+                                                   <a href="configurable.html">
+                                                   <img class="pic-1" src="assets/images/products/men-3-1.jpg" alt="Product image">
+                                                   <img class="pic-2" src="assets/images/products/men-3-2.jpg" alt="Product image">
+                                                   </a>                                                
+                                                </div>
+                                             </div>
+                                             <div class="col-xl-8 col-lg-7 col-md-7 col-sm-12">
+                                                <div class="list-content">
+                                                   <h3><a href="configurable.html">Lorem ipsum dolor</a></h3>
+                                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                                   <div class="price">$16.00
+                                                      <span>$20.00</span>
+                                                   </div>
+                                                   <div class="listcart-area">
+                                                      <div class="list-cart">
+                                                         <a class="add-to-cart" href="cart.html">Add To Cart</a>
+                                                      </div>
+                                                      <div class="social">
+                                                         <ul>
+                                                            <li><a href="#" title="Quick View"><i class="fa fa-eye"></i></a></li>
+                                                            <li><a href="#" title="Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                                                            <li><a href="#" title="Compare"><i class="fas fa-exchange-alt"></i></a></li>
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div class="product-list">
+                                          <div class="row">
+                                             <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12">
+                                                <div class="product-image">
+                                                   <a href="configurable.html">
+                                                   <img class="pic-1" src="assets/images/products/women-1-1.jpg" alt="Product image">
+                                                   <img class="pic-2" src="assets/images/products/women-1-2.jpg" alt="Product image">
+                                                   </a>                                                
+                                                </div>
+                                             </div>
+                                             <div class="col-xl-8 col-lg-7 col-md-7 col-sm-12">
+                                                <div class="list-content">
+                                                   <h3><a href="configurable.html">Lorem ipsum dolor</a></h3>
+                                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                                   <div class="price">$16.00
+                                                      <span>$20.00</span>
+                                                   </div>
+                                                   <div class="listcart-area">
+                                                      <div class="list-cart">
+                                                         <a class="add-to-cart" href="cart.html">Add To Cart</a>
+                                                      </div>
+                                                      <div class="social">
+                                                         <ul>
+                                                            <li><a href="#" title="Quick View"><i class="fa fa-eye"></i></a></li>
+                                                            <li><a href="#" title="Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                                                            <li><a href="#" title="Compare"><i class="fas fa-exchange-alt"></i></a></li>
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </li>
+                                    <li>
+                                       <div class="product-list">
+                                          <div class="row">
+                                             <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12">
+                                                <div class="product-image">
+                                                   <a href="configurable.html">
+                                                   <img class="pic-1" src="assets/images/products/women-2-1.jpg" alt="Product image">
+                                                   <img class="pic-2" src="assets/images/products/women-2-2.jpg" alt="Product image">
+                                                   </a>                                                
+                                                </div>
+                                             </div>
+                                             <div class="col-xl-8 col-lg-7 col-md-7 col-sm-12">
+                                                <div class="list-content">
+                                                   <h3><a href="configurable.html">Lorem ipsum dolor</a></h3>
+                                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                                   <div class="price">$16.00
+                                                      <span>$20.00</span>
+                                                   </div>
+                                                   <div class="listcart-area">
+                                                      <div class="list-cart">
+                                                         <a class="add-to-cart" href="cart.html">Add To Cart</a>
+                                                      </div>
+                                                      <div class="social">
+                                                         <ul>
+                                                            <li><a href="#" title="Quick View"><i class="fa fa-eye"></i></a></li>
+                                                            <li><a href="#" title="Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                                                            <li><a href="#" title="Compare"><i class="fas fa-exchange-alt"></i></a></li>
+                                                         </ul>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </li>
+                                 </Ul>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="pagination-area">
+                        <nav aria-label="Page navigation example">
+                           <ul class="pagination">
+                              <li class="page-item">
+                                 <a class="page-link" href="#" aria-label="Previous">
+                                 <span aria-hidden="true">&laquo;</span>
+                                 <span class="sr-only">Previous</span>
+                                 </a>
+                              </li>
+                              <li class="page-item"><a class="page-link" href="javascript:;">1</a></li>
+                              <li class="page-item"><a class="page-link" href="javascript:;">2</a></li>
+                              <li class="page-item"><a class="page-link" href="javascript:;">3</a></li>
+                              <li class="page-item">
+                                 <a class="page-link" href="#" aria-label="Next">
+                                 <span aria-hidden="true">&raquo;</span>
+                                 <span class="sr-only">Next</span>
+                                 </a>
+                              </li>
+                           </ul>
+                        </nav>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+ {% endblock %}      

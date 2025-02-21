@@ -29,3 +29,24 @@ def product_detail(request,pk,slug):
         'additional_images': images,
     }
     return render(request, 'product_details.html',context)
+<<<<<<< HEAD
+=======
+
+def shop(request):
+    categories = category.objects.all()  # Use 'categories' instead of 'category'
+    products=product.objects.all()
+    context = {
+        'categories': categories,
+        'products': products,  # Use 'products' instead of 'product'
+    }
+    return render(request,'product_view.html',context)
+
+def category_products(request, slug):
+    category = get_object_or_404(category, slug=slug)
+    products = product.objects.filter(category=category)  # Get products for selected category
+
+    context = {
+        'category': category,
+        'products': products,
+    }    
+>>>>>>> 3d2669df (second commit)
