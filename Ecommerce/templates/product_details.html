@@ -118,11 +118,8 @@
                      <div class="price">Rs:{{products.price}}
                      </div>
                      <div class="desc">
-<<<<<<< HEAD
                         <p>{{products.short_description|safe}}</p>
-=======
-                        <p>{{products.short_description|safe|truncatechars:250}}</p>
->>>>>>> 3d2669df (second commit)
+                        {% comment %} <p>{{products.short_description|safe|truncatechars:250}}</p> {% endcomment %}
                      </div>
                      <div class="attribute">
                         <p><span>Brands:</span>{{products.brand}}</p>

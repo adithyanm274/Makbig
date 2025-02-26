@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="404-page">
+            <div class="breadcrumb-area">
+               <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><span>404</span></li>
+               </ul>
+            </div> 
+            <div class="col-lg-8 offset-lg-2">
+               <div class="not-found">
+                  <h1>404</h1>
+                  <h4>Oops! That page can’t be found</h4>
+                  <a href="{% url 'home' %}" class="btn theme-btn">Go To Home</a>
+               </div>
+            </div>
+         </div>
+      </div>
+
+{% endblock content %}

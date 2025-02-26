@@ -40,11 +40,8 @@ h3.title {
     <div class="tab-products">
         <ul class="nav nav-tabs" id="myTab1" role="tablist">
             <li class="nav-item">
-<<<<<<< HEAD
-                <a class="nav-link active" id="tab-1" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Men</a>
-=======
+                {% comment %} <a class="nav-link active" id="tab-1" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Men</a> {% endcomment %}
                 <a class="nav-link active" id="tab-1" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Mobile</a>
->>>>>>> 3d2669df (second commit)
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="tab-2" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Women</a>
@@ -84,11 +81,7 @@ h3.title {
                                                             <li><a href="#" data-tip="Compare"><i class="fas fa-exchange-alt"></i></a></li>
                                                         </ul>
                                                     </div>
-<<<<<<< HEAD
-                                                    <h3 class="title">{{ product.title|truncatechars:60 }}</h3>
-=======
                                                     <h3 class="title">{{ product.title|truncatechars:100 }}</h3>
->>>>>>> 3d2669df (second commit)
                                                     <div class="product-content">
                                                         <div class="price">Discount:{{ product.discount }}%
                                                           Price:₹{{ product.price }}

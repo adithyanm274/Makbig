@@ -2,10 +2,7 @@
 {% load static %}
 
 {% block content %}
-<style>
 
-
-</style>
 <div class="shop-area">
             <div class="breadcrumb-area">
                <ul>
@@ -27,8 +24,7 @@
                                  <ul style="display: block;">
                                  {% for cat in categories %}
                                     <li>
-                                    <a href="shop.html">{{ cat.title }}</a>
-                                    </li>
+                             <a href="{% url 'shop' %}" class="category-link" data-id="{{ cat.id }}">{{ cat.title }}</a>                                    </li>
                                  {% endfor %}
                                  </ul>
                               </li>
@@ -147,12 +143,13 @@
                     <div class="shop-grid">
                 <div class="product-item">
                  <div class="row">
-                    <ul>
+                    <ul id="product-container">
+
                         {% for product in products %}
                             <li>
                                 <div class="product-grid">
                                     <div class="product-image">
-                                        <a href="#">
+                                        <a href="{% url 'product_detail' product.id %}">
                                             <img class="pic-1" src="{{product.feature_image}}" style="height:320px;width:200px;" alt="Product image">
                                         </a>
                                         <ul class="social">
@@ -182,24 +179,23 @@
    {% comment %} ####################################### {% endcomment %}
                            <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab-2">
                               <div class="shop-list">
-                                 <Ul>
+                               <ul id="product-container">
+                                 {% for product in products %}
                                     <li>
                                        <div class="product-list">
                                           <div class="row">
                                              <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12">
                                                 <div class="product-image">
-                                                   <a href="configurable.html">
-                                                   <img class="pic-1" src="assets/images/products/men-1-1.jpg" alt="Product image">
-                                                   <img class="pic-2" src="assets/images/products/men-1-2.jpg" alt="Product image">
+                                                   <a href="{% url 'product_detail' product.id %}">
+                                                   <img class="pic-1" src="{{product.feature_image}}"style="height:250px;width:200px;" alt="Product image">
                                                    </a>                                                
                                                 </div>
                                              </div>
                                              <div class="col-xl-8 col-lg-7 col-md-7 col-sm-12">
                                                 <div class="list-content">
-                                                   <h3><a href="configurable.html">Lorem ipsum dolor</a></h3>
-                                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                                   <div class="price">$16.00
-                                                      <span>$20.00</span>
+                                                   <h3><a href="{% url 'product_detail' product.id %}">{{ product.title|truncatechars:50 }}</a></h3>
+                                                   <p>{{product.short_description|safe|truncatechars:150}}</p>
+                                                   <div class="price">Rs:{{product.price}}
                                                    </div>
                                                    <div class="listcart-area">
                                                       <div class="list-cart">
@@ -218,146 +214,8 @@
                                           </div>
                                        </div>
                                     </li>
-                                    <li>
-                                       <div class="product-list">
-                                          <div class="row">
-                                             <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12">
-                                                <div class="product-image">
-                                                   <a href="configurable.html">
-                                                   <img class="pic-1" src="assets/images/products/men-2-1.jpg" alt="Product image">
-                                                   <img class="pic-2" src="assets/images/products/men-2-2.jpg" alt="Product image">
-                                                   </a>                                                
-                                                </div>
-                                             </div>
-                                             <div class="col-xl-8 col-lg-7 col-md-7 col-sm-12">
-                                                <div class="list-content">
-                                                   <h3><a href="configurable.html">Lorem ipsum dolor</a></h3>
-                                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                                   <div class="price">$16.00
-                                                      <span>$20.00</span>
-                                                   </div>
-                                                   <div class="listcart-area">
-                                                      <div class="list-cart">
-                                                         <a class="add-to-cart" href="cart.html">Add To Cart</a>
-                                                      </div>
-                                                      <div class="social">
-                                                         <ul>
-                                                            <li><a href="#" title="Quick View"><i class="fa fa-eye"></i></a></li>
-                                                            <li><a href="#" title="Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                                                            <li><a href="#" title="Compare"><i class="fas fa-exchange-alt"></i></a></li>
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
                                     </li>
-                                    <li>
-                                       <div class="product-list">
-                                          <div class="row">
-                                             <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12">
-                                                <div class="product-image">
-                                                   <a href="configurable.html">
-                                                   <img class="pic-1" src="assets/images/products/men-3-1.jpg" alt="Product image">
-                                                   <img class="pic-2" src="assets/images/products/men-3-2.jpg" alt="Product image">
-                                                   </a>                                                
-                                                </div>
-                                             </div>
-                                             <div class="col-xl-8 col-lg-7 col-md-7 col-sm-12">
-                                                <div class="list-content">
-                                                   <h3><a href="configurable.html">Lorem ipsum dolor</a></h3>
-                                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                                   <div class="price">$16.00
-                                                      <span>$20.00</span>
-                                                   </div>
-                                                   <div class="listcart-area">
-                                                      <div class="list-cart">
-                                                         <a class="add-to-cart" href="cart.html">Add To Cart</a>
-                                                      </div>
-                                                      <div class="social">
-                                                         <ul>
-                                                            <li><a href="#" title="Quick View"><i class="fa fa-eye"></i></a></li>
-                                                            <li><a href="#" title="Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                                                            <li><a href="#" title="Compare"><i class="fas fa-exchange-alt"></i></a></li>
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </li>
-                                    <li>
-                                       <div class="product-list">
-                                          <div class="row">
-                                             <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12">
-                                                <div class="product-image">
-                                                   <a href="configurable.html">
-                                                   <img class="pic-1" src="assets/images/products/women-1-1.jpg" alt="Product image">
-                                                   <img class="pic-2" src="assets/images/products/women-1-2.jpg" alt="Product image">
-                                                   </a>                                                
-                                                </div>
-                                             </div>
-                                             <div class="col-xl-8 col-lg-7 col-md-7 col-sm-12">
-                                                <div class="list-content">
-                                                   <h3><a href="configurable.html">Lorem ipsum dolor</a></h3>
-                                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                                   <div class="price">$16.00
-                                                      <span>$20.00</span>
-                                                   </div>
-                                                   <div class="listcart-area">
-                                                      <div class="list-cart">
-                                                         <a class="add-to-cart" href="cart.html">Add To Cart</a>
-                                                      </div>
-                                                      <div class="social">
-                                                         <ul>
-                                                            <li><a href="#" title="Quick View"><i class="fa fa-eye"></i></a></li>
-                                                            <li><a href="#" title="Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                                                            <li><a href="#" title="Compare"><i class="fas fa-exchange-alt"></i></a></li>
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </li>
-                                    <li>
-                                       <div class="product-list">
-                                          <div class="row">
-                                             <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12">
-                                                <div class="product-image">
-                                                   <a href="configurable.html">
-                                                   <img class="pic-1" src="assets/images/products/women-2-1.jpg" alt="Product image">
-                                                   <img class="pic-2" src="assets/images/products/women-2-2.jpg" alt="Product image">
-                                                   </a>                                                
-                                                </div>
-                                             </div>
-                                             <div class="col-xl-8 col-lg-7 col-md-7 col-sm-12">
-                                                <div class="list-content">
-                                                   <h3><a href="configurable.html">Lorem ipsum dolor</a></h3>
-                                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                                   <div class="price">$16.00
-                                                      <span>$20.00</span>
-                                                   </div>
-                                                   <div class="listcart-area">
-                                                      <div class="list-cart">
-                                                         <a class="add-to-cart" href="cart.html">Add To Cart</a>
-                                                      </div>
-                                                      <div class="social">
-                                                         <ul>
-                                                            <li><a href="#" title="Quick View"><i class="fa fa-eye"></i></a></li>
-                                                            <li><a href="#" title="Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                                                            <li><a href="#" title="Compare"><i class="fas fa-exchange-alt"></i></a></li>
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </li>
+                                    {% endfor %}
                                  </Ul>
                               </div>
                            </div>
@@ -389,4 +247,108 @@
             </div>
          </div>
       </div>
- {% endblock %}      
+   
+   {% block js %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+    $(".category-link").click(function(e) {
+        e.preventDefault();
+
+        let categoryId = $(this).data("id");
+        console.log("Fetching products for category:", categoryId);
+
+        $.ajax({
+            url: "{% url 'filter_category' %}",
+            type: "GET",
+            data: { category_id: categoryId },
+            dataType: "json",
+            success: function(response) {
+                console.log("Success:", response);
+
+                if (response.length === 0) {
+                    // Redirect to error page when no products found
+                    window.location.href = "/error_page/";
+                    return;
+                }
+
+                let productGrid = $(".shop-grid ul");
+                let productList = $(".shop-list ul");
+
+                productGrid.empty();
+                productList.empty();
+
+                response.forEach(product => {
+                    let productGridItem = `
+                        <li>
+                            <div class="product-grid">
+                                <div class="product-image">
+                                    <a href="/product_detail/${product.id}">
+                                        <img src="${product.feature_image}" alt="${product.title}">
+                                    </a>
+                                </div>
+                                <div class="product-content">
+                                    <h3 class="title"><a href="/product_detail/${product.id}">${product.title.substring(0, 50)}</a></h3>
+                                    <div class="price">RS: ${product.price}</div>
+                                    <a class="add-to-cart" href="#">Add To Cart</a>
+                                </div>
+                            </div>
+                        </li>
+                    `;
+
+                    let productListItem = `
+                        <li>
+                            <div class="product-list">
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12">
+                                        <div class="product-image">
+                                            <a href="/product_detail/${product.id}">
+                                                <img class="pic-1" src="${product.feature_image}" style="height:250px;width:200px;" alt="${product.title}">
+                                            </a>                                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-7 col-md-7 col-sm-12">
+                                        <div class="list-content">
+                                            <h3><a href="/product_detail/${product.id}">${product.title.substring(0, 50)}</a></h3>
+                                            <div class="price">Rs: ${product.price}</div>
+                                            <div class="listcart-area">
+                                                <div class="list-cart">
+                                                    <a class="add-to-cart" href="#">Add To Cart</a>
+                                                </div>
+                                                <div class="social">
+                                                    <ul>
+                                                        <li><a href="#" title="Quick View"><i class="fa fa-eye"></i></a></li>
+                                                        <li><a href="#" title="Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                                                        <li><a href="#" title="Compare"><i class="fas fa-exchange-alt"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    `;
+
+                    productGrid.append(productGridItem);
+                    productList.append(productListItem);
+                });
+            },
+            error: function(xhr, status, error) {
+                if (xhr.status === 404) {
+                    // Redirect to error page when no products are found
+                    window.location.href = "/error_page/";
+                } else {
+                    console.error("AJAX Error:", xhr.status, xhr.responseText);
+                    alert("Failed to load products. Check console for details.");
+                }
+            }
+        });
+    });
+});
+</script>
+
+{% endblock js %}
+
+ {% endblock %}       

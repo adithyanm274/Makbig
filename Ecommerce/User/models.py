@@ -27,9 +27,6 @@ class slider(models.Model):
 # main category model creaton
 class category(models.Model):
     title = models.CharField(max_length=255)
-<<<<<<< HEAD
-
-=======
     slug = models.SlugField(unique=True, blank=True)
     
     def save(self, *args, **kwargs):
@@ -44,7 +41,6 @@ class category(models.Model):
 
         super().save(*args, **kwargs)
     
->>>>>>> 3d2669df (second commit)
     def __str__(self) ->str:
         return self.title[:50]  
 
@@ -52,15 +48,12 @@ class category(models.Model):
 class subcategory(models.Model):
     title = models.CharField(max_length=255)
     category = models.ForeignKey(category, on_delete=models.CASCADE)
-<<<<<<< HEAD
-=======
     slug = models.SlugField(unique=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
->>>>>>> 3d2669df (second commit)
 
     def __str__(self):
        return self.title[:50]              
